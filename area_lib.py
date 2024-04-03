@@ -70,7 +70,7 @@ def triangle_area(sides: list) -> Union[int, float]:
 def cirlce_area(radius: Union[int, float]) -> Union[int, float]:
     if not isinstance(radius, (int, float)):
         raise InvalidData('radius must be a number')
-    elif (radius <= 0):
-        raise InvalidData('radius must be a positive number')
+    elif not (radius > 0):
+        raise InvalidData('radius must be a positive number and greater than 0')
     else:
         return pi*radius*radius
