@@ -62,7 +62,7 @@ class TestArea(TestCase):
     def test_triangle_not_enough_arg(self):
         with self.assertRaises(InvalidData) as e:
             triangle_area([1,1])
-        self.assertEqual('figure must have at least 3 sides', e.exception.args[0])
+        self.assertEqual('triangle must have 3 sides', e.exception.args[0])
     
     def test_triangle_too_much_arg(self):
         with self.assertRaises(InvalidData) as e:

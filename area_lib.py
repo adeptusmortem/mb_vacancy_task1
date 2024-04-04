@@ -18,8 +18,8 @@ class InvalidData(Exception):
 # Функция поднимает ошибку, если данные неверные
 def ValidateData(sides: list) -> None: 
     # Ошибка если у многоугольника число сторон меньши 3
-    if len(sides) < 3: 
-        raise InvalidData('figure must have at least 3 sides')
+    if len(sides) < 2: 
+        raise InvalidData('figure must have at least 2 sides')
     
     # Ошибка если в списке сторон многоугольника есть не-число
     elif False in (isinstance(side, (int, float)) for side in sides): 
@@ -74,3 +74,16 @@ def cirlce_area(radius: Union[int, float]) -> Union[int, float]:
         raise InvalidData('radius must be a positive number and greater than 0')
     else:
         return pi*radius*radius
+    
+# Если захотим добавить расчет площади другого многоугольника, например прямоугольника, то будет выглядить примерно так
+def rectangle_area(sides: list) -> Union[int, float]:
+    ValidateData(sides)
+    return sides[0]*sides[1]
+
+def calc_area(*args):
+    if len(args) == 1:
+        return cirlce_area(*args)
+    elif len(args) == 2:
+        return rectangle_area(args)
+    elif len(args) == 3:
+        return triangle_area(args)
